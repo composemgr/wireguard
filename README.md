@@ -45,7 +45,7 @@ See `docker-compose.yaml` for complete list of configurable options.
 
 ## 📂 Volumes
 
-- `./rootfs/config/wireguard` - Data storage
+- `./volumes/config/wireguard` - Data storage
 
 ## 🔍 Logging
 
