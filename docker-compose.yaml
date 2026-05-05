@@ -38,7 +38,7 @@ services:
     volumes:
       - '/lib/modules:/lib/modules'
       - '/usr/lib/modules:/usr/lib/modules'
-      - './rootfs/config/wireguard:/etc/wireguard'
+      - './volumes/config/wireguard:/etc/wireguard'
     ports:
       - '51820:51820/udp'
       - '172.17.0.1:51821:51821/tcp'
