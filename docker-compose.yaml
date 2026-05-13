@@ -25,7 +25,7 @@ services:
       WG_DEVICE: eth0
       UI_CHART_TYPE: 3
       UI_TRAFFIC_STATS: true
-      WG_HOST: ${BASE_HOST_NAME}
+      WG_HOST: ${BASE_HOST_NAME:-localhost}
       WG_PERSISTENT_KEEPALIVE: 20
       UI_ENABLE_SORT_CLIENTS: true
       WG_ENABLE_EXPIRES_TIME: false
