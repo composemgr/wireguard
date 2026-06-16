@@ -29,8 +29,8 @@ services:
       INIT_USERNAME: administrator
       INIT_PASSWORD: "${APP_ADMIN_PASS:-password}"
       INIT_DNS: 1.1.1.1,8.8.8.8,9.9.9.9
-      INIT_IPV4_CIDR: 192.168.253.0/24
-      INIT_IPV6_CIDR: fddc:8ae0:5c95:ff8e::/64
+      INIT_IPV4_CIDR: 10.8.0.0/24
+      INIT_IPV6_CIDR: fd42:42:42::/64
       INIT_ALLOWED_IPS: 0.0.0.0/0,::/0
     volumes:
       - '/lib/modules:/lib/modules'
