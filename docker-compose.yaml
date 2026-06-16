@@ -50,7 +50,9 @@ services:
       - net.ipv6.conf.all.forwarding=1
       - net.ipv6.conf.default.forwarding=1
     networks:
-      - wireguard
+      wireguard:
+        - ipv4_address: 192.168.253.1
+        - ipv6_address: fdcc:ad94:bacf:61a3::2a
 
 networks:
   wireguard:
