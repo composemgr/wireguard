@@ -23,11 +23,11 @@ services:
       INSECURE: true
       INIT_PORT: 51820
       INIT_ENABLED: true
-      DISABLE_IPV6: false
+      DISABLE_IPV6: true
       EXPERIMENTAL_AWG: false
       INIT_ALLOWED_IPS: 0.0.0.0/0,::/0
       INIT_IPV4_CIDR: 192.168.253.0/24
-      INIT_IPV6_CIDR: 2001:0DB8::/64
+      INIT_IPV6_CIDR: fdcc:ad94:bacf:61a3::/64
       INIT_DNS: 74.50.113.149,82.29.128.43,1.1.1.1
       INIT_USERNAME: administrator
       INIT_PASSWORD: "${APP_ADMIN_PASS:-password}"
@@ -51,34 +51,14 @@ services:
       - net.ipv6.conf.default.forwarding=1
     networks:
       - wireguard
-      - proxy
-      - cloudflare
-    labels:
-      - 'traefik.enable=true'
-      - 'cloudflare.enable=true'
-      - 'traefik.docker.network=proxy'
-      - 'cloudflare.service=http://wireguard:51821'
-      - 'cloudflare.hostname=wireguard.${CLOUDFLARE_ZONE_NAME:-}'
-      - 'traefik.http.routers.wireguard.entrypoints=http'
-      - 'traefik.http.routers.wireguard-secure.tls=true'
-      - 'traefik.http.routers.wireguard.rule=Host($(${BASE_HOST_NAME:-$HOSTNAME}))'
-      - 'traefik.http.middlewares.wireguard-https-redirect.redirectscheme.scheme=https'
-      - 'traefik.http.routers.wireguard.middlewares=wireguard-https-redirect'
-      - 'traefik.http.routers.wireguard-secure.entrypoints=https'
-      - 'traefik.http.routers.wireguard-secure.rule=Host($(${BASE_HOST_NAME:-$HOSTNAME}))'
-      - 'traefik.http.routers.wireguard-secure.tls.certresolver=cloudflare'
-      - 'traefik.http.routers.wireguard-secure.service=wireguard'
-      - 'traefik.http.services.wireguard.loadbalancer.server.port=51821'
 
 networks:
   wireguard:
     external: false
     name: wireguard
     driver: bridge
+    enable_ipv6: true
     ipam:
       config:
         - subnet: 192.168.253.0/24
-  proxy:
-    external: true
-  cloudflare:
-    external: true
+        - subnet: fdcc:ad94:bacf:61a3::/64
