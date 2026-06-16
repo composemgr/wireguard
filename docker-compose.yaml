@@ -19,12 +19,12 @@ services:
     environment:
       LANG: en
       PORT: 51821
-      INSECURE: true
       HOST: 0.0.0.0
+      INSECURE: true
+      INIT_PORT: 51820
       INIT_ENABLED: true
       DISABLE_IPV6: false
-      EXPERIMENTAL_AWG: true
-      INIT_PORT: 51820
+      EXPERIMENTAL_AWG: false
       INIT_ALLOWED_IPS: 0.0.0.0/0,::/0
       INIT_IPV4_CIDR: 192.168.253.0/24
       INIT_IPV6_CIDR: 2001:0DB8::/64
