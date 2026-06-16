@@ -22,8 +22,8 @@ services:
       HOST: 0.0.0.0
       INSECURE: true
       INIT_PORT: 51820
-      INIT_ENABLED: true
-      DISABLE_IPV6: true
+      INIT_ENABLED: false
+      DISABLE_IPV6: false
       EXPERIMENTAL_AWG: false
       INIT_ALLOWED_IPS: 0.0.0.0/0,::/0
       INIT_IPV4_CIDR: 192.168.253.0/24
@@ -45,10 +45,10 @@ services:
       - SYS_MODULE
     sysctls:
       - net.ipv4.ip_forward=1
-      - net.ipv4.conf.all.src_valid_mark=1
-      - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv6.conf.all.forwarding=1
+      - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv6.conf.default.forwarding=1
+      - net.ipv4.conf.all.src_valid_mark=1
     networks:
       - wireguard
 
@@ -56,9 +56,9 @@ networks:
   wireguard:
     external: false
     name: wireguard
-    driver: bridge
-    enable_ipv6: true
+    enable_ipv6: false
     ipam:
+      driver: default
       config:
         - subnet: 192.168.253.0/24
         - subnet: fdcc:ad94:bacf:61a3::/64
