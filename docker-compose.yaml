@@ -56,7 +56,7 @@ networks:
   wireguard:
     external: false
     name: wireguard
-    enable_ipv6: false
+    enable_ipv6: true
     ipam:
       driver: default
       config:
