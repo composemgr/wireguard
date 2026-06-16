@@ -22,7 +22,7 @@ services:
       HOST: 0.0.0.0
       INSECURE: true
       DISABLE_IPV6: false
-      EXPERIMENTAL_AWG: true
+      EXPERIMENTAL_AWG: false
       INIT_ENABLED: true
       INIT_PORT: 51820
       INIT_HOST: ${BASE_HOST_NAME:-wg}
